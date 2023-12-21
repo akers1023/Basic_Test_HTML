@@ -88,7 +88,7 @@
                                 <h3 class="place-headling">Oriental Pearl Towe - Shanghai</h3>
                                 <p class="place-time">Fri 27 Nov 2023</p>
                                 <p class="place-description">Welcome to K/DA's signature performance in Shanghai! With the participation of characters such as Ahri and Kai'Sa, promises...</p>
-                                <a href="" class="place-buy-btn">Buy Now</a>
+                                <button class="place-buy-btn js-buy-ticket">Buy Now</button>
                             </div>
                         </div>
                         <div class="place-item">
@@ -97,7 +97,7 @@
                                 <h3 class="place-headling">Bitexco Tower - Ho Chi Minh City</h3>
                                 <p class="place-time">Thu 21 Dec 2023</p>
                                 <p class="place-description">With its seductive and unconventional look, this show promises to bring a unique musical experience. Evelynn's appearance is not just...</p>
-                                <a href="" class="place-buy-btn">Buy Now</a>
+                                <button class="place-buy-btn js-buy-ticket">Buy Now</button>
                             </div>
                         </div>
                         <div class="place-item">
@@ -106,7 +106,7 @@
                                 <h3 class="place-headling">The 1998 Club - Nottingham</h3>
                                 <p class="place-time">Su 24 Dec 2023</p>
                                 <p class="place-description">Welcome to a special night at the 1998 Club Nottingham! Today, KDA will release their debut Jazz album...</p>
-                                <a href="" class="place-buy-btn">Buy Now</a>
+                                <button class="place-buy-btn js-buy-ticket">Buy Now</button>
                             </div>
                         </div>
                         <div class="clear"></div>
@@ -123,9 +123,9 @@
         </div>
     </div>
 
-    <div class="modal">
-        <div class="modal-container">
-            <div class="modal-close">
+    <div class="modal js-modal">
+        <div class="modal-container js-modal-container">
+            <div class="modal-close js-modal-close">
                 <i class="ti-close"></i>
             </div>
             <header class="modal-header">
@@ -142,7 +142,7 @@
                     <i class="ti-user"></i>
                     Send to
                 </label>
-                <input id="email" type="text" class="modal-input" placeholder="How many?">
+                <input id="email" type="text" class="modal-input" placeholder="Enter your email...">
                 <button id="buy-tickets">
                     Pay
                     <i class="ti-check"></i>
@@ -154,5 +154,28 @@
             </div>
         </div>
     </div>
+
+    <script>
+        const buyBtns = document.querySelectorAll('.js-buy-ticket');
+        const modal = document.querySelector('.js-modal') 
+        const modalContainer = document.querySelector('.js-modal-container');
+        const modalClose = document.querySelector('.js-modal-close')
+
+        function showBuyTickets() {
+            modal.classList.add('open');
+        }
+                
+        function hideBuyTickets() {
+            modal.classList.remove('open');
+        }
+        for (let buyBtn of buyBtns) {
+            buyBtn.addEventListener('click', showBuyTickets);
+        }
+        modalClose.addEventListener('click', hideBuyTickets);
+        modal.addEventListener('click', hideBuyTickets);
+        modalContainer.addEventListener('click', function(e) {
+            e.stopPropagation()
+        });
+    </script>
 </body>
 </html>
